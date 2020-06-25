@@ -1,0 +1,618 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'Baloo Thambi 2', cursive;
+    box-sizing: border-box;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 90%;
+    margin: auto;
+    margin-top: 13vh;
+}
+
+#homepageImage {
+    height: 400px;
+    width: 400px;
+}
+#line {
+    height: 460px;
+    width: 4px;
+    border-radius: 12px;
+    text-align: center;
+    margin: auto;
+    background-color: #c7d0d8;
+}
+#box {
+    height: 460px;
+    width: 410px;
+    border-radius: 6px;
+    background-color: #eff0f2;
+}
+
+form{
+    text-align: center;
+}
+
+.card {
+    width: 260px;
+    height: 75%;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+    margin: auto;
+}
+.front-card {
+    position: absolute;
+    height: 100%;
+    width:100%;
+    backface-visibility: hidden;
+    margin-top: 57.5px;
+}
+.back-card {
+    position: absolute;
+    height: 100%;
+    width:100%;
+    backface-visibility: hidden;
+    transform:rotateY(180deg);
+}
+
+.fields{
+    border: 1.5px solid black;
+    width: 260px;
+    margin: auto;
+    border-radius: 6px;
+    background-color: #c7d0d8;
+}
+.back-fields{
+    border: 1.5px solid black;
+    width: 20vw;
+    margin: auto;
+    border-radius: 6px;
+    background-color: #c7d0d8;
+    margin-top: 0.5vh;
+}
+.fields:nth-child(2){
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+}
+.fields:nth-child(3){
+    padding-left: 15px;
+}
+.back-fields:nth-child(7) {
+    padding-left: 15px;
+}
+
+input{
+    padding: 10px;
+    height: 35px;
+    width: 200px;
+    background-color: #c7d0d8;
+    font-size: 0.9rem;
+}
+
+.btn{
+    border: 1.5px black solid;
+    cursor: pointer;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    height: 42px;
+    width: 200px;
+    background-color: #c7d0d8;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.licon{
+    cursor: pointer;
+    font-size: 25px;
+    margin: auto 10px;
+}
+.fa-facebook-official:hover {
+    color: blue;
+  }
+
+.fa-google:hover {
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+.forgotPassword {
+    float: right;
+    cursor: pointer;
+}
+
+a{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width : 1100px) {
+    .grid {
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows:1fr 0.01fr 1fr;
+        margin: auto;
+        width: 60%;
+        margin-top: 4vh;
+        margin-bottom: 4vh;
+    }
+    #homepageImage {
+        margin-top: 1vh;
+        height: 550px;
+        width: 550px;
+    }
+    #line {
+        height: 4px;
+        width: 100%;
+    }
+    #box {
+        height: 620px;
+        width: 100%;
+    }
+    .grid-item{
+        margin: 0px 0px 50px 0px;
+    }
+    .front-card {
+        margin-top: 77.5px;
+    }
+    .fields{
+        width: 340px;
+    }
+    .back-fields{
+        width: 340px;
+        margin-top: 0.9vh;
+    }
+    input{
+        height: 50px;
+        width: 280px;
+        font-size: 1.3rem;
+    }
+    .btn{
+        height: 50px;
+        width: 250px;
+        font-size: 1.5em;
+    }
+    .card{
+        width: 340px;
+    }
+    .licon{
+        font-size: 35px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width : 800px) {
+    .grid {
+        display: block;
+        grid-template-columns: 0.6fr;
+        margin: auto;
+        width: 75%;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    .grid-item{
+        margin: 15px 0px;
+    }
+    #homepageImage {
+        height: 450px;
+        width: 450px;
+    }
+    #line {
+        height: 4px;
+        width: 100%;
+    }
+    #box {
+        height: 620px;
+        width: 100%;
+    }
+    .front-card {
+        margin-top: 77.5px;
+    }
+    .fields{
+        width: 320px;
+    }
+    .back-fields{
+        width: 320px;
+        margin-top: 1vh;
+    }
+    input{
+        height: 50px;
+        width: 250px;
+        font-size: 1.2rem;
+    }
+    .btn{
+        height: 50px;
+        width: 250px;
+        font-size: 1.5em;
+    }
+    .card{
+        width: 320px;
+    }
+    .licon{
+        font-size: 40px;
+    }
+  
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:480px) {
+    #homepageImage {
+        height: 230px;
+        width: 230px;
+    }
+    #line {
+        height:4px;
+        width: 100%;
+    }
+    
+    .grid {
+        grid-template-columns: 1.5fr;
+        grid-template-rows: 0.5fr 0.01fr 1fr;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        grid-gap: 10px;
+        width: 90%;
+    }
+    #box {
+        height: 400px;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .card{
+        width: 220px;
+        height: 78%;
+    }
+    input{
+        height: 30px;
+        width: 160px;
+        font-size: 0.9em;
+    }
+    .fields{
+        width: 220px;
+    }
+    .back-fields{
+        width: 220px;
+        margin-top: 0.5vh;
+    }
+    .front-card {
+        margin-top: 22px;
+    }
+    .btn{
+        width: 150px;
+        height: 35px;
+        font-size: 1em;
+    }
+    .licon{
+        font-size: 20px;
+    }
+    
+}
+
+
+
+
+@media (max-width:320px) {
+    #homepageImage {
+        height:200px;
+        width: 200px;
+    }
+    
+    #line {
+        height:4px;
+        width: 100%;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.01fr 1fr;
+        margin-top: 2vh;
+        grid-gap: 5px;
+    }
+    #box {
+        height: 400px;
+        width: 100%;
+        border-radius: 0px;
+    }
+    .card{
+        width: 220px;
+        height: 78%;
+    }
+    input{
+        height: 30px;
+        width: 140px;
+        font-size: 0.9em;
+    }
+    .fields{
+        width: 220px;
+    }
+    .back-fields{
+        width: 220px;
+    }
+    .front-card {
+        margin-top: 22px;
+    }
+    
+    .btn{
+        width: 150px;
+    }
+    .licon{
+        font-size: 23px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media only screen and (max-width : 600px) {
+
+    #homepageImage {
+        height: 200px;
+        width: 200px;
+    }
+    
+    #line {
+        height: 5px;
+        width:320px;
+        background-color: #c7d0d8;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr  0.01fr 1fr;
+        margin-top: 1.5vh;
+        grid-auto-rows: 90vh;
+        overflow-x:hidden ;
+        grid-gap: 2vh;
+    }
+    .grid-item:nth-child(3) {
+        width: 320px;
+        margin: auto;
+    }
+    .front-card{
+        margin-top: 39.15px;
+    }
+
+    .fields{
+        width: 230px;
+    }
+    input{
+        width: 180px;
+    }
+
+    .back-fields{
+        width: 230px;
+    }
+    .card {
+        border: 1px red solid;
+        width: 75%;
+        margin: auto;
+        height:100%;
+    }
+}
+
+@media only screen and (max-width : 320px) {
+    
+    #homepageImage {
+        height: 200px;
+        width: 200px;
+    }
+    
+    #line {
+        height: 5px;
+        width:280px;
+        background-color: #c7d0d8;
+    }
+    .grid{
+        grid-template-columns: 1.5fr;
+        grid-template-rows: 0.5fr  0.01fr 1fr;
+        margin-top: 1.5vh;
+        grid-auto-rows: 90vh;
+        overflow-x: hidden ;
+        grid-gap: 2vh;
+    }
+    .grid-item:nth-child(3) {
+        width: 280px;
+        margin: auto;
+    }
+    .front-card{
+        margin-top: 39.15px;
+    }
+    .fields{
+        width: 210px;
+    }
+    input{
+        width: 160px;
+    }
+
+    .back-fields{
+        width: 210px;
+    }
+    .card {
+        width: 78%;
+        height:100%;
+        margin: auto;
+    }
+}
+@media only screen and (max-width : 1100px) {
+    .fields{
+        width: 230px;
+    }
+    input{
+        width: 170px;
+    }
+}
+@media only screen and (max-width : 950px) {
+    #homepageImage {
+        height: 480px;
+        width: 480px;
+    }
+    
+    #line {
+        height: 5px;
+        width:480px;
+        background-color: #c7d0d8;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr  0.01fr 1fr;
+        padding-top: 1.5vh;
+        overflow-x:hidden ;
+        grid-gap: 2vh;
+    }
+    .grid-item:nth-child(3) {
+        width: 480px;
+        height: 480px;
+        margin: auto;
+    }
+    .front-card{
+        margin-top: 96px;
+    }
+
+    .fields{
+        width: 320px;
+    }
+    input{
+        width: 260px;
+    }
+
+    .back-fields{
+        width: 320px;
+    }
+    .card {
+        width: 60%;
+        margin: auto;
+        height:100%;
+    }
+}
+@media only screen and (max-width : 1024px) {
+    #homepageImage {
+        height:550px;
+        width: 550px;
+    }
+    
+    #line {
+        height: 5px;
+        width:550px;
+        background-color: #c7d0d8;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr  0.01fr 1fr;
+        margin-top: 5vh;
+        grid-auto-rows: 90vh;
+        overflow-x:hidden ;
+        grid-gap: 2vh;
+    }
+    .grid-item:nth-child(3) {
+        width: 550px;
+        height: 700px;
+        margin: auto;
+    }
+    .front-card{
+        margin-top: 110px;
+    }
+
+    .fields{
+        width: 320px;
+    }
+    input{
+        height: 55px;
+        width: 240px;
+    }
+
+    .back-fields{
+        width: 320px;
+        margin-top:1vh;
+    }
+    .card {
+        width: 60%;
+        margin: auto;
+        height:100%;
+    }
+} */
