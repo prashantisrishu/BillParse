@@ -34,7 +34,7 @@ class SignIn extends React.Component{
 
     submitHandleLogin = e => {
         e.preventDefault()
-        fetch('https://jsonplaceholder.typicode.com/posts' , {
+        fetch('TEST API URL' , {
             method : 'POST' ,
             body : JSON.stringify({
                 usernameLogin : this.state.usernameLogin ,
@@ -55,7 +55,7 @@ class SignIn extends React.Component{
 
     submitHandleSignup = e => {
         e.preventDefault()
-        fetch('https://jsonplaceholder.typicode.com/posts' , {
+        fetch('TEST API URL' , {
             method : 'POST' ,
             body : JSON.stringify({
                 firstnameSignup : this.state.firstnameSignup,
