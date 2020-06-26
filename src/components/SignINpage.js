@@ -135,7 +135,7 @@ class SignIn extends React.Component{
                                         </div>
 
                                         <div className="forgotPassword"><u>Forgot Password?</u></div>
-                                        <button className="btn">SignIn</button>
+                                        <Link to="/profile" ><button className="btn">SignIn</button></Link>
                                         <div className="signup">Or Sign In Using</div>
                                         <div className="signLogo">
                                             <i className="fa fa-facebook-official licon" aria-hidden="true"></i>                                          
@@ -217,7 +217,7 @@ class SignIn extends React.Component{
                                         <i className={isVisible ? "fa fa-eye":"fa fa-eye-slash"} id="password-icon"  onClick={this.handleClick}></i>
                                     </div>
 
-                                    <button className="btn">SignUp</button>
+                                    <Link to="/profile"><button className="btn">SignUp</button></Link>
 
 
                                         <div className="signup">Or Sign Up Using</div>
