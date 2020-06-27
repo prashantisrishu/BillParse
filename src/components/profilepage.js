@@ -3,8 +3,8 @@ import './profilepage.css';
 import axios from 'axios';
 
 class EditProfile extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             username : 'Prashant13' ,
             firstnameProfile : 'Prashant',
@@ -31,9 +31,18 @@ class EditProfile extends React.Component {
     }
 
     componentDidMount(){
-
-        axios.get('https://jsonplaceholder.typicode.com/posts').then((response)=>{console.log(response)});
-     
+        fetch("https://jsonplaceholder.typicode.com/posts",
+        { 
+            method : "GET",
+        },
+        {
+            headers : {
+            "Content-Type" : "application/json",
+            "Accept" : "application/json"
+        },
+    })
+    .then(respone => respone.json())
+    .then(data => console.log(data))
     }
 
 
