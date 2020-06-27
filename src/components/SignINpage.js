@@ -1,12 +1,14 @@
 import React from 'react'
 import homepage from './images/homepage.png'
-import  axios from 'axios';
-import './SignINpage.css'
+import './SignINpage.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class SignIn extends React.Component{
     constructor(props){
         super(props);
         this.state={
+
             isVisible : false,
             // Login credentials
 
@@ -21,12 +23,22 @@ class SignIn extends React.Component{
             addressSignup : '',
             passwordSignup : '',
 
+            //Error
+            requestDetails : []
+
         }
         this.handleClick  = this.handleClick.bind(this)
         this.flipcard  = this.flipcard.bind(this)
         this.flipcardreverse  = this.flipcardreverse.bind(this)
+        // this.displayPopUp = this.displayPopUp.bind(this);
+        this.handleSuccessfulSubmit = this.handleSuccessfulSubmit.bind(this)
 
     }
+
+    handleSuccessfulSubmit() {
+        this.props.history.push("/profile");
+    }
+ 
     //LOGIN
     changeHandleLogin = e  => {
         this.setState({ [e.target.name] : e.target.value})
@@ -34,18 +46,29 @@ class SignIn extends React.Component{
 
     submitHandleLogin = e => {
         e.preventDefault()
-        fetch('TEST API URL' , {
-            method : 'POST' ,
+        fetch("https://jsonplaceholder.typicode.com/posts" , {
+            method : "POST",
             body : JSON.stringify({
-                usernameLogin : this.state.usernameLogin ,
-                passwordLogin : this.state.passwordLogin,
+                username : this.state.usernameLogin,
+                password : this.state.passwordLogin,
             }),
             headers : {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-Type" : "application/json",
+                "Accept" : "application/json"
+            }
+        }).then(respone => {
+            if(respone.status == 201) {
+                this.handleSuccessfulSubmit();
+                const result = respone.json();
+                this.setState({
+                    requestDetails : result
+                })
+                console.log(result);
+            }
+            else {
+                alert("Cannot go further.... Wrogn Credentials");
             }
         })
-        .then(respone => respone.json())
-        .then(json => console.log(json))
     }
 
     //Signup
@@ -55,22 +78,31 @@ class SignIn extends React.Component{
 
     submitHandleSignup = e => {
         e.preventDefault()
-        fetch('TEST API URL' , {
+        fetch('https://jsonplaceholder.typicode.com/posts' , {
             method : 'POST' ,
             body : JSON.stringify({
-                firstnameSignup : this.state.firstnameSignup,
-                lastnameSignup : this.state.lastnameSignup,
-                usernameSignup : this.state.usernameSignup,
-                emailnameSignup : this.state.emailSignup,
-                addressSignup : this.state.addressSignup,
-                passwordSignup : this.state.passwordSignup,
+                firstname : this.state.firstnameSignup,
+                lastname : this.state.lastnameSignup,
+                username : this.state.usernameSignup,
+                emailname : this.state.emailSignup,
+                address : this.state.addressSignup,
+                password : this.state.passwordSignup,
             }),
             headers : {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-type": "application/json; charset=UTF-8" ,
+                "Accept" : "application/json"
             }
         })
-        .then(respone => respone.json())
-        .then(json => console.log(json))
+        .then(respone => {
+            if(respone.status == 201) {
+                this.handleSuccessfulSubmit();
+                const result = respone.json();
+                console.log(result);
+            }
+            else {
+                alert("Cannot go further.... Wrogn Credentials");
+            }
+        })
     }
 
     handleClick(){
@@ -87,12 +119,15 @@ class SignIn extends React.Component{
         document.getElementsByClassName("card")[0].style.transform = "rotateY(360deg)";
     }
 
+    
+
     render(){
         const {isVisible} = this.state
         //login
         const {usernameLogin , passwordLogin} = this.state;
         //signup
         const {firstnameSignup , lastnameSignup , usernameSignup , emailSignup , addressSignup , passwordSignup} = this.state;
+
 
         return(
             <div className="grid">
@@ -105,7 +140,7 @@ class SignIn extends React.Component{
                 <div className="grid-item" id="box">
                     <div className="card">
                         <div className="front-card">
-                                <form className="signinForm" onSubmit={this.submitHandleLogin}>
+                                <form className="signinForm form" onSubmit={this.submitHandleLogin}>
                                         <h2>Sign In</h2>
 
                                         <div className="fields">
@@ -135,25 +170,28 @@ class SignIn extends React.Component{
                                         </div>
 
                                         <div className="forgotPassword"><u>Forgot Password?</u></div>
-                                        <Link to="/profile" ><button className="btn">SignIn</button></Link>
+
+                                        <button type ="submit" className="btn">SignIn</button>
+
                                         <div className="signup">Or Sign In Using</div>
                                         <div className="signLogo">
                                             <i className="fa fa-facebook-official licon" aria-hidden="true"></i>                                          
                                             <i className="fa fa-google licon" aria-hidden="true"></i>
-                                        </div>
+                                        </div>                  
                                         <div style ={{fontSize : "14" }} >Don't have an account? <a onClick={this.flipcard}><u>Sign Up</u></a></div>
                                 </form>
                         </div> 
                         
                         <div className="back-card">
                             
-                                <form className="signupForm" onSubmit = {this.submitHandleSignup}>
+                                <form className="signupForm form" onSubmit = {this.submitHandleSignup}>
                                     <h2>Sign Up</h2>
 
                                     <div className="back-fields">
                                         <i className="fa fa-pencil" aria-hidden="true"></i>
                                         <input
                                             type="text" 
+                                            className="input"
                                             placeholder="First Name"
                                             onChange = {this.changeHandleSignup}
                                             name = "firstnameSignup"
@@ -165,6 +203,7 @@ class SignIn extends React.Component{
                                         <i className="fa fa-pencil" aria-hidden="true"></i>
                                         <input
                                             type="text" 
+                                            className="input"
                                             placeholder="Last Name"
                                             onChange = {this.changeHandleSignup}
                                             name = "lastnameSignup"
@@ -177,6 +216,7 @@ class SignIn extends React.Component{
                                         <input  
                                             type="text"
                                             placeholder="UserName"
+                                            className="input"
                                             onChange = {this.changeHandleSignup}
                                             name = "usernameSignup"
                                             value = {this.usernameSignup}
@@ -187,6 +227,7 @@ class SignIn extends React.Component{
                                         <i className="fa fa-at" aria-hidden="true"></i> 
                                         <input  
                                             type="email"
+                                            className="input"
                                             placeholder="Email"
                                             onChange = {this.changeHandleSignup}
                                             name = "emailSignup"
@@ -198,18 +239,20 @@ class SignIn extends React.Component{
                                         <i className="fa fa-address-book" aria-hidden="true"></i>
                                         <input  
                                             type="text"
+                                            className="input"
                                             placeholder="Address"
                                             onChange = {this.changeHandleSignup}
                                             name = "addressSignup"
                                             value = {this.addressSignup}
                                         />
-                                    </div>
+                                    </div> 
 
                                     <div className="back-fields">
                                         <i className="fa fa-lock"></i>
                                         <input  
                                             type={isVisible ? "text" : "password"}  
                                             placeholder="Password"
+                                            className="input"
                                             onChange = {this.changeHandleSignup}
                                             name = "passwordSignup"
                                             value = {this.passwordSignup}
@@ -217,7 +260,7 @@ class SignIn extends React.Component{
                                         <i className={isVisible ? "fa fa-eye":"fa fa-eye-slash"} id="password-icon"  onClick={this.handleClick}></i>
                                     </div>
 
-                                    <Link to="/profile"><button className="btn">SignUp</button></Link>
+                                    <button className="btn" type="submit">SignUp</button>
 
 
                                         <div className="signup">Or Sign Up Using</div>
@@ -225,12 +268,13 @@ class SignIn extends React.Component{
                                             <i className="fa fa-facebook-official licon" aria-hidden="true"></i>                                          
                                             <i className="fa fa-google licon" aria-hidden="true"></i>
                                         </div>
-                                        <p>Have an account? <a onClick={this.flipcardreverse}><u>Sign In</u></a></p>
+                                        <p>Have an account?<a onClick={this.flipcardreverse}><u>Sign In</u></a></p>
                                     
                                 </form>
                         </div>
                     </div>
                 </div>
+
             </div>
         )
     }
